@@ -38,12 +38,12 @@
           <h3>Posts</h3>
         </router-link>
       </div>
-
+      <!-- 
       <div class="column todos">
         <router-link :to="{ name: 'Todos', params: { id: person.id } }">
           <h3>Todos</h3>
         </router-link>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

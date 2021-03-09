@@ -3,12 +3,16 @@
     <h1>This is Posts page</h1>
 
     <div class="row">
-      <div :key="person.id" :v-for="person in people" class="person column">
+      <div
+        :key="people[person].id"
+        :v-for="person in people"
+        class="person column"
+      >
         <h2>
-          {{ person.title }}
+          {{ people[person].title }}
         </h2>
         <h5>
-          {{ person.body }}
+          {{ people[person].body }}
         </h5>
       </div>
     </div>
@@ -28,19 +32,8 @@ export default {
         `https://jsonplaceholder.typicode.com/posts/${this.$route.params.id}`
       );
       const data = await res.json();
+      console.log(data);
       return data;
-    },
-    toPosts() {
-      this.$router.push({
-        name: "Posts",
-        params: { id: this.$route.params.id },
-      });
-    },
-    toTodos() {
-      this.$router.push({
-        name: "Todos",
-        params: { id: this.$route.params.id },
-      });
     },
   },
   async created() {

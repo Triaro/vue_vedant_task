@@ -14,19 +14,14 @@ const routes = [
     component: () => import('../views/About.vue')
   },
   {
-    path: '/:id',
+    path: '/person/:id',
     name: 'Person',
     component: () => import('../views/Person.vue')
   },
   {
-    path: '/:id/:id',
+    path: '/person/:id/posts',
     name: 'Posts',
     component: () => import('../views/Posts.vue')
-  },
-  {
-    path: '/person/todos',
-    name: 'Todos',
-    component: () => import('../views/Todos.vue')
   }
 ]
 
