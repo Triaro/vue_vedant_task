@@ -3,17 +3,15 @@
     <h1>This is Posts page</h1>
 
     <div class="row">
-      <div
-        :key="people[person].id"
-        :v-for="person in people"
-        class="person column"
-      >
-        <h2>
-          {{ people[person].title }}
-        </h2>
-        <h5>
-          {{ people[person].body }}
-        </h5>
+      <div :key="post.id" v-for="post in posts" class="post column">
+        <div>
+          <h2>
+            {{ post.title }}
+          </h2>
+          <h5>
+            {{ post.body }}
+          </h5>
+        </div>
       </div>
     </div>
   </div>
@@ -23,7 +21,7 @@ export default {
   data() {
     console.log(this.$route.params.id);
     return {
-      people: [],
+      posts: [],
     };
   },
   methods: {
@@ -62,15 +60,15 @@ export default {
   background: rgb(126, 171, 255);
   border-radius: 25px;
 }
-.person {
+.post {
   background: rgb(0, 52, 148);
   border-radius: 25px;
   padding: 20px;
 }
-.person h3 {
+.post h3 {
   color: rgb(241, 0, 0);
 }
-.person h5 {
+.post h5 {
   color: rgb(255, 255, 255);
 }
 h1 {

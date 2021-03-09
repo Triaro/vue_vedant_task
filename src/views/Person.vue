@@ -34,9 +34,9 @@
 
     <div class="row">
       <div class="column posts">
-        <router-link :to="{ name: 'Posts', params: { id: person.id } }">
+        <a :href="`/person/${person.id}/posts`">
           <h3>Posts</h3>
-        </router-link>
+        </a>
       </div>
       <!-- 
       <div class="column todos">

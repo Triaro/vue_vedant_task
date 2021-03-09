@@ -2,7 +2,7 @@
   <h1>People</h1>
   <div class="row">
     <div class="person column" :key="person.id" v-for="person in people">
-      <router-link :to="{ name: 'Person', params: { id: person.id } }">
+      <a :href="`/person/${person.id}`">
         <h3>
           {{ person.username }}
         </h3>
@@ -12,7 +12,7 @@
         <h5>
           {{ person.email }}
         </h5>
-      </router-link>
+      </a>
     </div>
   </div>
 </template>
