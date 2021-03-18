@@ -4,14 +4,12 @@
 
     <div class="row">
       <div :key="post.id" v-for="post in posts" class="post column">
-        <div>
-          <h2>
-            {{ post.title }}
-          </h2>
-          <h5>
-            {{ post.body }}
-          </h5>
-        </div>
+        <h2>
+          {{ post.title }}
+        </h2>
+        <h5>
+          {{ post.body }}
+        </h5>
       </div>
     </div>
   </div>
@@ -35,7 +33,7 @@ export default {
     },
   },
   async created() {
-    this.people = await this.getName();
+    this.posts.push(await this.getName());
   },
 };
 </script>
@@ -46,13 +44,8 @@ export default {
   flex: 30%;
   margin: 20px;
 }
-.posts {
+.post {
   background: salmon;
-  border-radius: 25px;
-  padding: 20px;
-}
-.todos {
-  background: springgreen;
   border-radius: 25px;
   padding: 20px;
 }
@@ -65,7 +58,7 @@ export default {
   border-radius: 25px;
   padding: 20px;
 }
-.post h3 {
+.post h2 {
   color: rgb(241, 0, 0);
 }
 .post h5 {

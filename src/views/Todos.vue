@@ -1,69 +1,43 @@
 <template>
   <div class="about">
-    <h1>This is Person page</h1>
+    <h1>This is Todos page</h1>
 
     <div class="row">
-      <div class="person column">
-        <h3>
-          {{ person.username }}
-        </h3>
-        <h5>
-          {{ person.name }}
-        </h5>
-        <h5>
-          {{ person.email }}
-        </h5>
-        <h5>{{ person.address.street }},</h5>
-        <h5>{{ person.address.suite }},</h5>
-        <h5>{{ person.address.city }},</h5>
-        <h5>
-          {{ person.address.zipcode }}
-        </h5>
-        <h5>Phone: {{ person.phone }}</h5>
-      </div>
-    </div>
-
-    <div class="row">
-      <div @click="toPosts()" class="column posts">
-        <h3>Posts</h3>
-      </div>
-      <div @click="toTodos()" class="column todos">
-        <h3>Todos</h3>
+      <div :key="todo.id" v-for="todo in todos" class="todos column">
+        <h2>
+          {{ todo.title }}
+        </h2>
+        <!-- <h5 v-if="`${todo.completed}`">Completed</h5> -->
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
+  name: "Todos",
+  computed: mapGetters(["allTodos"]),
   data() {
     console.log(this.$route.params.id);
     return {
-      person: {},
+      todos: [],
     };
   },
   methods: {
-    async getName() {
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/users/${this.$route.params.id}`
-      );
-      const data = await res.json();
-      return data;
-    },
-    toPosts() {
-      this.$router.push({
-        name: "Posts",
-        params: { id: this.$route.params.id },
-      });
-    },
-    toTodos() {
-      this.$router.push({
-        name: "Todos",
-        params: { id: this.$route.params.id },
-      });
-    },
+    ...mapActions(["fetchTodos"]),
+    // async getName() {
+    //   const res = await fetch(
+    //     `https://jsonplaceholder.typicode.com/todos/${this.$route.params.id}`
+    //   );
+    //   const data = await res.json();
+    //   console.log(data);
+    //   return data;
+    // },
   },
-  async created() {
-    this.person = await this.getName();
+  created() {
+    this.fetchTodos(this.$route.params.id);
+    //this.todos.push(await this.getName());
   },
 };
 </script>
